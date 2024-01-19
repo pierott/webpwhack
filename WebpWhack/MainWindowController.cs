@@ -66,6 +66,7 @@ namespace WebpWhack
         public void OnAutoRun( bool start )
         {
             config!.IsAutoStart = start;
+            configRepo.SaveConfig( config );
             SetAutoRun( start );
         }
 
