@@ -15,9 +15,9 @@ namespace WebpWhack
         {
             try
             {
-                bool isStartup = args.Length > 0 && args[0].ToLower() == "startup";
+                bool isStartup = args.Length > 0 && args[0].ToLower() == Constants.StartupAttr.ToLower();
 
-                new Program().Run( isStartup );
+                new CompositionRoot().Run( isStartup );
             }
             catch( Exception ex )
             {

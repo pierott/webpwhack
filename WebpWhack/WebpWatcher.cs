@@ -4,18 +4,31 @@ namespace WebpWhack
 {
     public class WebpWatcher
     {
+        private readonly ILogger logger;
         private readonly FileSystemWatcher fileWatcher;
-
         public event Action<string>? OnWebpAdded;
 
-        public WebpWatcher()
+        public WebpWatcher( ILogger logger )
         {
+            this.logger = logger;
             fileWatcher = new FileSystemWatcher();
             fileWatcher.Changed += OnFileAdded;
+            fileWatcher.Created += OnFileAdded;
         }
+
+        public bool IsRunning { get; private set; }
 
         public void Start( string dirPath )
         {
+            if( IsRunning )
+            {
+                logger.Log( "Restarting watcher" );
+                Stop();
+            }
+
+            logger.Log( $"Starting watcher at '{dirPath}'" );
+
+            IsRunning = true;
             fileWatcher.Path = dirPath;
             fileWatcher.Filter = "*.webp";
             fileWatcher.IncludeSubdirectories = false;
@@ -29,6 +42,11 @@ namespace WebpWhack
 
         public void Stop()
         {
+            if( !IsRunning ) return;
+
+            logger.Log( "Stopping watcher" );
+
+            IsRunning = false;
             fileWatcher.EnableRaisingEvents = false;
         }
     }
