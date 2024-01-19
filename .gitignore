@@ -1,0 +1,9 @@
+*.user
+*.log
+launchSettings.json
+
+bin/
+obj/
+.vs/
+.vscode/
+packages/

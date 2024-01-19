@@ -1,0 +1,26 @@
+﻿<Window x:Class="WebpWhack.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WebpWhack"
+        mc:Ignorable="d"
+        Title="Webp Whack" Height="150" Width="530" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,5,0,0">
+            <TextBlock Height="20" Margin="5,0,0,0">Whack Folder:</TextBlock>
+            <TextBox Width="360" Height="20" Margin="10,0,10,0" Text="{Binding FolderPath}"></TextBox>
+            <Button Height="20" Padding="5,0,5,0" Click="BrowseButton_Click">Browse</Button>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,5,0,0">
+            <CheckBox Margin="5,0,0,0" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" IsChecked="{Binding IsAutoStart}"/>
+            <TextBlock Margin="5,0,0,0">Run on startup</TextBlock>
+        </StackPanel>
+        <Button Grid.Row="2" Width="150" Height="45" FontSize="20" Click="RunButton_Click" Name="RunButton" Content="{Binding RunBtnText}"/>
+    </Grid>
+</Window>
