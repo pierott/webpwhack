@@ -15,14 +15,14 @@ namespace WebpWhack
         private readonly IAutoRun autoRun;
         private readonly IImageConverter imageConverter;
         private readonly IEventSignaller eventSignaller;
+        private readonly IWebpWatcher webpWatcher;
 
         private Config? config;
-        private WebpWatcher webpWatcher;
         private Dispatcher? uiDispatcher;
         private Application? app;
         private MainWindow? mainWindow;
 
-        public MainWindowController( ILogger logger, MainWindowViewModel mainViewModel, IConfigRepo configRepo, WebpWatcher webpWatcher, IAutoRun autoRun, IImageConverter imageConverter, IEventSignaller eventSignaller )
+        public MainWindowController( ILogger logger, MainWindowViewModel mainViewModel, IConfigRepo configRepo, IWebpWatcher webpWatcher, IAutoRun autoRun, IImageConverter imageConverter, IEventSignaller eventSignaller )
         {
             this.logger = logger;
             this.mainViewModel = mainViewModel;

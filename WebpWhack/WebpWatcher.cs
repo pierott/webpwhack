@@ -2,7 +2,7 @@
 
 namespace WebpWhack
 {
-    public class WebpWatcher
+    public class WebpWatcher : IWebpWatcher
     {
         private readonly ILogger logger;
         private readonly FileSystemWatcher fileWatcher;
