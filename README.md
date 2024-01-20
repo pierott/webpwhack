@@ -1,7 +1,7 @@
 # webpwhack
 Converts webp files into jpeg once they're copied into a folder.
 
-I tried to make UI as simple as possible in the first version.
+In the first version I tried to make UI as simple as possible.
 You can select a folder and decide if you want to start with the system.
 
 The app starts looking into folder only when you press "Start Running" button.
