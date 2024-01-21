@@ -10,6 +10,7 @@
         private WebpWatcher webpWatcher;
         private MainWindowController controller;
         private IEventSignaller eventSignaller;
+        private DesktopNotifier desktopNotifier;
 
         public CompositionRoot()
         {
@@ -27,8 +28,9 @@
             imageConverter = new ImageConverter( logger );
             webpWatcher = new WebpWatcher( logger );
             eventSignaller = new EventSignaller();
+            desktopNotifier = new DesktopNotifier();
 
-            controller = new MainWindowController( logger, mainViewModel, configRepo, webpWatcher, autoRun, imageConverter, eventSignaller );
+            controller = new MainWindowController( logger, mainViewModel, configRepo, webpWatcher, autoRun, imageConverter, eventSignaller, desktopNotifier );
         }
 
         public void Run( bool isStartup )

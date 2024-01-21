@@ -15,6 +15,7 @@ namespace WebpWhack
         private readonly IAutoRun autoRun;
         private readonly IImageConverter imageConverter;
         private readonly IEventSignaller eventSignaller;
+        private readonly IDesktopNotifier desktopNotifier;
         private readonly IWebpWatcher webpWatcher;
 
         private Config? config;
@@ -22,7 +23,7 @@ namespace WebpWhack
         private Application? app;
         private MainWindow? mainWindow;
 
-        public MainWindowController( ILogger logger, MainWindowViewModel mainViewModel, IConfigRepo configRepo, IWebpWatcher webpWatcher, IAutoRun autoRun, IImageConverter imageConverter, IEventSignaller eventSignaller )
+        public MainWindowController( ILogger logger, MainWindowViewModel mainViewModel, IConfigRepo configRepo, IWebpWatcher webpWatcher, IAutoRun autoRun, IImageConverter imageConverter, IEventSignaller eventSignaller, IDesktopNotifier desktopNotifier )
         {
             this.logger = logger;
             this.mainViewModel = mainViewModel;
@@ -31,6 +32,7 @@ namespace WebpWhack
             this.autoRun = autoRun;
             this.imageConverter = imageConverter;
             this.eventSignaller = eventSignaller;
+            this.desktopNotifier = desktopNotifier;
             webpWatcher.OnWebpAdded += ConvertFile;
             eventSignaller.OnShowWindow += DispatchShowWindow;
         }
@@ -139,6 +141,11 @@ namespace WebpWhack
         private void ConvertFile( string filePath )
         {
             imageConverter.Convert( filePath );
+
+            if( config!.FolderPath == Environment.GetFolderPath( Environment.SpecialFolder.Desktop ) )
+            {
+                desktopNotifier.RefreshDesktop();
+            }
         }
 
         private void ToggleWatcher()
