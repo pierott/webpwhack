@@ -12,7 +12,7 @@ namespace WebpWhack
             set = true;
 
             var key = Registry.CurrentUser.CreateSubKey( @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run" );
-            string currentExePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            string currentExePath = Environment.ProcessPath!;
             key.SetValue( Constants.AppName, $"\"{currentExePath}\" {Constants.StartupAttr}" );
             key.Close();
         }
