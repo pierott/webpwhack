@@ -51,6 +51,8 @@ namespace WebpWhack
             uiDispatcher = Dispatcher.CurrentDispatcher;
 
             config = configRepo.LoadConfig();
+            config.IsRunning = isStartup || config.IsRunning; // No point in running on start and being inactive
+
             ApplyConfig();
 
             eventSignaller.Start();
