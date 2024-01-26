@@ -25,4 +25,4 @@ Ran into an issue or have a great idea to enhance WebpWhack? We're all ears! Dro
 
 ## License
 
-WebpWhack is happily shared with you under the [MIT License](LICENSE). Feel free to use, tweak, and share it further.
+WebpWhack is happily shared with you under the [MIT License](WebpWhack/LICENSE). Feel free to use, tweak, and share it further.
