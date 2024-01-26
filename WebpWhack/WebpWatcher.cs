@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using WebpWhack.Logging;
 
 namespace WebpWhack
 {

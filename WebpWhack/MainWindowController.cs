@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows;
 using System.Windows.Threading;
+using WebpWhack.Logging;
 
 namespace WebpWhack
 {
@@ -23,7 +24,7 @@ namespace WebpWhack
         private Application? app;
         private MainWindow? mainWindow;
 
-        public MainWindowController( ILogger logger, MainWindowViewModel mainViewModel, IConfigRepo configRepo, IWebpWatcher webpWatcher, IAutoRun autoRun, IImageConverter imageConverter, IEventSignaller eventSignaller, IDesktopNotifier desktopNotifier )
+        public MainWindowController( ILogger logger, MainWindowViewModel mainViewModel, IConfigRepo configRepo, IWebpWatcher webpWatcher, IAutoRun autoRun, IImageConverter imageConverter, IEventSignaller eventSignaller, IDesktopNotifier desktopNotifier, Dispatcher dispatcher )
         {
             this.logger = logger;
             this.mainViewModel = mainViewModel;
@@ -33,6 +34,7 @@ namespace WebpWhack
             this.imageConverter = imageConverter;
             this.eventSignaller = eventSignaller;
             this.desktopNotifier = desktopNotifier;
+            uiDispatcher = dispatcher;
             webpWatcher.OnWebpAdded += ConvertFile;
             eventSignaller.OnShowWindow += DispatchShowWindow;
         }
@@ -47,8 +49,6 @@ namespace WebpWhack
                 eventSignaller.SignalShowWindow(); // Show window in the already running process.
                 return;
             }
-
-            uiDispatcher = Dispatcher.CurrentDispatcher;
 
             config = configRepo.LoadConfig();
             config.IsRunning = isStartup || config.IsRunning; // No point in running on start and being inactive
