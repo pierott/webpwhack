@@ -31,7 +31,6 @@ namespace WebpWhack.Logging
             delayBeforeRetry = TimeSpan.FromMilliseconds( 50 );
             rByte = Encoding.ASCII.GetBytes( "/r" )[0];
             nByte = Encoding.ASCII.GetBytes( "/n" )[0];
-
         }
 
         public void WriteMessage( LogMsg msg )

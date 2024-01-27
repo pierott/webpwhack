@@ -30,7 +30,7 @@ namespace WebpWhack
 
         private static async Task UpdateMyApp()
         {
-            var mgr = new UpdateManager( "https://the.place/you-host/updates" );
+            var mgr = new UpdateManager( "https://github.com/pierott/webpwhack/releases" );
 
             // check for new version
             var newVersion = await mgr.CheckForUpdatesAsync();
