@@ -25,7 +25,7 @@ namespace WebpWhack.Logging
 
         private void AddToViewModel( LogMsg msg )
         {
-            mainViewModel.LogMessages.Insert( 0, $"[{msg.Time:hh:mm:ss}] {msg.Msg}{Environment.NewLine}" );
+            mainViewModel.LogMessages.Insert( 0, $"[{msg.Time:HH:mm:ss}] {msg.Msg}{Environment.NewLine}" );
             if( mainViewModel.LogMessages.Count > 5 ) mainViewModel.LogMessages.RemoveAt( mainViewModel.LogMessages.Count-1 );
         }
     }

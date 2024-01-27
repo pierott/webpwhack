@@ -41,7 +41,7 @@ namespace WebpWhack.Logging
 
         private string FormatMessage( LogMsg msg )
         {
-            return $"{msg.Time:yyyy/MM/dd hh:mm:ss} [{msg.ProcessId}:{msg.ThreadId}] {msg.MsgType}: {msg.Msg}";
+            return $"{msg.Time:yyyy/MM/dd HH:mm:ss} [{msg.ProcessId}:{msg.ThreadId}] {msg.MsgType}: {msg.Msg}";
         }
 
         private async Task OnWriteAction( string? msg )
