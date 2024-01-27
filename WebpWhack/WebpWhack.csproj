@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <PackageReference Include="SixLabors.ImageSharp" Version="3.1.2" />
+    <PackageReference Include="Velopack" Version="0.0.243" />
   </ItemGroup>
 
 </Project>
