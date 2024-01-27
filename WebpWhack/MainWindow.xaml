@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WebpWhack"
         mc:Ignorable="d"
-        Title="Webp Whack" Height="150" Width="530" ResizeMode="NoResize">
+        Title="Webp Whack" Height="260" Width="530" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="25"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="55"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,5,0,0">
             <TextBlock Height="20" Margin="5,0,0,0">Whack Folder:</TextBlock>
@@ -22,5 +23,12 @@
             <TextBlock Margin="5,0,0,0">Run on startup</TextBlock>
         </StackPanel>
         <Button Grid.Row="2" Width="150" Height="45" FontSize="20" Click="RunButton_Click" Name="RunButton" Content="{Binding RunBtnText}"/>
+        <ListBox Grid.Row="3" x:Name="LogListBox" Height="130" ItemsSource="{Binding LogMessages}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" Height="15"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>

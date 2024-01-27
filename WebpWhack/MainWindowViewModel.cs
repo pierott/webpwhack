@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,11 @@ namespace WebpWhack
         private string? folderPath;
         private string? runBtnText;
         private bool isAutoStart;
+        
+        public MainWindowViewModel()
+        {
+            LogMessages = new ObservableCollection<string>();
+        }
 
         public string? FolderPath
         {
@@ -45,5 +51,7 @@ namespace WebpWhack
                 RaisePropertyChanged( nameof( IsAutoStart ) );
             }
         }
+
+        public ObservableCollection<string> LogMessages { get; set; }
     }
 }
