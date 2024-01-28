@@ -31,7 +31,6 @@ namespace WebpWhack.Logging
             delayBeforeRetry = TimeSpan.FromMilliseconds( 50 );
             rByte = Encoding.ASCII.GetBytes( "/r" )[0];
             nByte = Encoding.ASCII.GetBytes( "/n" )[0];
-
         }
 
         public void WriteMessage( LogMsg msg )
@@ -41,7 +40,7 @@ namespace WebpWhack.Logging
 
         private string FormatMessage( LogMsg msg )
         {
-            return $"{msg.Time:yyyy/MM/dd hh:mm:ss} [{msg.ProcessId}:{msg.ThreadId}] {msg.MsgType}: {msg.Msg}";
+            return $"{msg.Time:yyyy/MM/dd HH:mm:ss} [{msg.ProcessId}:{msg.ThreadId}] {msg.MsgType}: {msg.Msg}";
         }
 
         private async Task OnWriteAction( string? msg )

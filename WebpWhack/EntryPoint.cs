@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Velopack;
 
 namespace WebpWhack
 {
@@ -15,6 +16,8 @@ namespace WebpWhack
         {
             try
             {
+                VelopackApp.Build().Run();
+
                 bool isStartup = args.Length > 0 && args[0].ToLower() == Constants.StartupAttr.ToLower();
 
                 new CompositionRoot().Run( isStartup );
@@ -23,6 +26,22 @@ namespace WebpWhack
             {
                 Trace.WriteLine( $"Abnormal program termination: {ex}" );
             }
+        }
+
+        private static async Task UpdateMyApp()
+        {
+            var mgr = new UpdateManager( "https://github.com/pierott/webpwhack/releases" );
+
+            // check for new version
+            var newVersion = await mgr.CheckForUpdatesAsync();
+            if( newVersion == null )
+                return; // no update available
+
+            // download new version
+            await mgr.DownloadUpdatesAsync( newVersion );
+
+            // install new version and restart app
+            mgr.ApplyUpdatesAndRestart();
         }
     }
 }
