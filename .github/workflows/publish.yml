@@ -12,16 +12,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: List Directories for Debugging
-      run: |
-        Write-Host "Listing BuildScripts Directory:"
-        Get-ChildItem "$Env:GITHUB_WORKSPACE\BuildScripts"
-        Write-Host "Listing Root Directory:"
-        Get-ChildItem $Env:GITHUB_WORKSPACE
-      shell: pwsh
-
     - name: Check Version
-      run: ${{ github.workspace }}\BuildScripts\VersionCheck.ps1
+      run: ${{ github.workspace }}\BuildScripts\CheckVersion.ps1
       shell: pwsh
 
     - name: Build and Publish
