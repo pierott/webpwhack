@@ -9,8 +9,9 @@
 
 . $PSScriptRoot\Common.ps1
 
-$version = Get-Content -Path "$rootPath\version.txt" -Raw
+[System.Environment]::CurrentDirectory = $rootPath
 
+$version = Get-Content -Path "$rootPath\version.txt" -Raw
 $tagName = "v$version"
 
 try {
