@@ -46,7 +46,7 @@ jobs:
 
     - name: List Files Debugging
       run: |
-        Get-ChildItem $Env:GITHUB_WORKSPACE -Recurse
+        Get-ChildItem $Env:GITHUB_WORKSPACE\WebpWhack\bin\Releases -Recurse
       shell: pwsh
 
     - name: Upload Release Assets
