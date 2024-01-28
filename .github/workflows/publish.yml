@@ -13,12 +13,12 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Check Version
-      run: .\BuildScripts\VersionCheck.ps1
+      run: ${{ github.workspace }}\BuildScripts\VersionCheck.ps1
       shell: pwsh
 
     - name: Build and Publish
       if: success()
-      run: .\BuildScripts\Publish.ps1
+      run: ${{ github.workspace }}\BuildScripts\Publish.ps1
 
     - name: Create Release
       id: create_release
