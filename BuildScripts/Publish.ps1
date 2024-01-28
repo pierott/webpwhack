@@ -3,6 +3,7 @@
 $version = Get-Content -Path "$rootPath\version.txt" -Raw
 $tagName = "v$version"
 
+$oldCD = [System.Environment]::CurrentDirectory
 [System.Environment]::CurrentDirectory = $rootPath
 
 dotnet tool update -g vpk
@@ -11,3 +12,5 @@ vpk pack -u WebpWhack -v $version -p $rootPath\WebpWhack\bin\publish -o $rootPat
 
 git tag $tagName
 git push origin $tagName
+
+[System.Environment]::CurrentDirectory = $oldCD
