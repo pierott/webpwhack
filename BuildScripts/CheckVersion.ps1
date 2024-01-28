@@ -21,9 +21,9 @@ try {
         exit 1
     } else {
         Write-Host "Tag $tagName does not exist"
+        exit 0
     }
 } catch {
     Write-Error $_
     exit 1
 }
-
