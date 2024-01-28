@@ -29,7 +29,7 @@ jobs:
       id: get_version
       run: |
         $version = Get-Content -Path version.txt
-        echo "::set-output name=VERSION::$version"
+        echo "::set-output name=VERSION::v$version"
       shell: pwsh
 
     - name: Create Release
