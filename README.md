@@ -11,7 +11,7 @@ Welcome to **WebpWhack**! This handy tool is here to save the day for artists an
 
 ## Quick Start Guide
 
-1. **Download WebpWhack**: Grab the latest version from our [GitHub Releases](#).
+1. **Download WebpWhack**: Grab the latest version from our [GitHub Releases](https://github.com/pierott/webpwhack/releases).
 2. **Set It Up**: Open the app, pick the folder for your `.webp` downloads, and decide if you want it to auto-start.
 3. **Kick Off**: Press "Start Running" to begin the conversion magic. WebpWhack will then work silently in the background, ready whenever you download new `.webp` images.
 
